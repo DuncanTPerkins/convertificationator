@@ -1,15 +1,17 @@
+import { ValueService } from './value.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatToolbarModule, MatIconModule, MatFormFieldModule, MatCardModule, MatInputModule } from '@angular/material';
-
 import { AppComponent } from './app.component';
+import { ConversionCardComponent } from './conversion-card/conversion-card.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConversionCardComponent
   ],
   imports: [
     BrowserModule,
@@ -19,9 +21,9 @@ import { AppComponent } from './app.component';
     MatFormFieldModule,
     MatCardModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
   ],
-  providers: [],
+  providers: [ValueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

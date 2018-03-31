@@ -1,12 +1,15 @@
 <mat-toolbar>
   <span>Convertificationator</span>
 </mat-toolbar>
-<mat-form-field class="example-form-field">
-  <input matInput type="text" placeholder="Value" (ngModelChange)="evaluateConversions($event)" [ngModel]="inValue"/>
+<mat-form-field class="value-input-field">
+  <input matInput type="number" placeholder="Value" (ngModelChange)="changeValue($event)" [ngModel]="invalue"/>
   <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
-<mat-card>{{inValue}} Miles => {{kil}} KM  </mat-card>
-<br>
-<mat-card>{{inValue}} Fahrenheit => {{cel}} Celsius</mat-card>
+<conversion-card *ngFor='let conversion of conversions'
+[from]='conversion.from'
+[to]='conversion.to'
+[formula]='conversion.formula'
+[name]='conversion.name'
+>
