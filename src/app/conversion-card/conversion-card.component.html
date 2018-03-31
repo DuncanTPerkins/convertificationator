@@ -1,1 +1,9 @@
-<mat-card>{{currentInValue || 0}} {{from}} = {{convertedValue | number:'1.0-3'}} {{to}}</mat-card>
+<mat-card>
+  <mat-card-subtitle>
+    {{name}}
+  </mat-card-subtitle>
+  <mat-card-content>
+    {{currentInValue || 0}} {{from}} = <span class="answer">{{convertedValue | number:'1.0-3'}}</span> {{to}}
+  </mat-card-content>
+</mat-card>
+<br>
