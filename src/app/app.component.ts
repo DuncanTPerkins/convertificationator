@@ -1,7 +1,9 @@
-import { Component, forwardRef, Inject } from '@angular/core';
+import { Component, forwardRef, Inject, ViewChild, Renderer2 } from '@angular/core';
 import { ValueService } from './value.service';
 import { ConversionCardComponent } from './conversion-card/conversion-card.component';
 import { Conversion } from './conversion.model';
+import { AddToFavoritesDialogComponent } from './add-to-favorites-dialog/add-to-favorites-dialog.component';
+import { MatDialog } from '@angular/material';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +11,8 @@ import { Conversion } from './conversion.model';
 })
 export class AppComponent {
   conversions: Conversion[] = new Array();
-  constructor(@Inject(forwardRef(() => ValueService))private valueService: ValueService) {
+  @ViewChild('valueField')valueField: any
+  constructor(private valueService: ValueService, private dialog: MatDialog) {
     this.conversions.push({
       from: 'MI',
       to: 'KM',
@@ -26,5 +29,12 @@ export class AppComponent {
 
   changeValue(value: number) {
     this.valueService.changeValue(value);
+  }
+
+  addToFavorites() {
+    let dialogRef = this.dialog.open(AddToFavoritesDialogComponent, {
+      height: '80%',
+      width: '80%'
+    });
   }
 }
