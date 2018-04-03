@@ -1,6 +1,21 @@
 <h2 mat-dialog-title>Add to Favorites</h2>
 <mat-dialog-content>
-<p>content</p>
+  <ng-container *ngFor='let conversion of conversions'>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{conversion.from}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-selection-list>
+        <mat-list-option *ngFor="let to of conversion.to">
+          {{to}}
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-expansion-panel>
+    <br>
+  </ng-container>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Cancel</button>

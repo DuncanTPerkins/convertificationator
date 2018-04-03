@@ -33,8 +33,12 @@ export class AppComponent {
 
   addToFavorites() {
     let dialogRef = this.dialog.open(AddToFavoritesDialogComponent, {
-      height: '80%',
-      width: '80%'
-    });
+      height: '50%',
+      width: '50%',
+      data: {
+        conversions: [{from: 'Miles', to: ['Meters', 'Kilometers', 'Parsecs']},
+                      {from: 'Fahrenheit', to: ['Celcius', 'Kelvin']}]
+        }
+      });
+    }
   }
-}

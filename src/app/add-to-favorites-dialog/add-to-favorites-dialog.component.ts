@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material';
+import { Conversion } from '../conversion.model';
 
 @Component({
   selector: 'app-add-to-favorites-dialog',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddToFavoritesDialogComponent implements OnInit {
 
-  constructor() { }
+  conversions: Conversion[];
+
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    this.conversions = data['conversions'];
+   }
 
   ngOnInit() {
   }

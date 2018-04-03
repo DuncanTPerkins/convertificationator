@@ -4,7 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatToolbarModule, MatIconModule, MatFormFieldModule, MatCardModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatIconModule, MatFormFieldModule, MatCardModule, MatInputModule, MatExpansionModule, MatListModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { ConversionCardComponent } from './conversion-card/conversion-card.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -30,7 +30,9 @@ import { AddToFavoritesDialogComponent } from './add-to-favorites-dialog/add-to-
     FormsModule,
     MatInputModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule,
+    MatListModule
   ],
   providers: [ValueService],
   bootstrap: [AppComponent]
