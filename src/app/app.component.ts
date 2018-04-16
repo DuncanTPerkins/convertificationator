@@ -4,28 +4,15 @@ import { ConversionCardComponent } from './conversion-card/conversion-card.compo
 import { Conversion } from './conversion.model';
 import { AddToFavoritesDialogComponent } from './add-to-favorites-dialog/add-to-favorites-dialog.component';
 import { MatDialog } from '@angular/material';
+import { DatabaseService } from './database.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  conversions: Conversion[] = new Array();
   @ViewChild('valueField')valueField: any
-  constructor(private valueService: ValueService, private dialog: MatDialog) {
-    this.conversions.push({
-      from: 'MI',
-      to: 'KM',
-      formula: x => x / 0.62137,
-      name: 'Miles to Kilometers'
-    },
-    {
-      from: 'C',
-      to: 'F',
-      formula: x => x * 1.8 + 32,
-      name: 'Celsius to Fahrenheit'
-    });
-  }
+  constructor(private valueService: ValueService, private dialog: MatDialog, private db: DatabaseService) {}
 
   changeValue(value: number) {
     this.valueService.changeValue(value);

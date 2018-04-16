@@ -1,16 +1,16 @@
 <h2 mat-dialog-title>Add to Favorites</h2>
 <mat-dialog-content>
-  <ng-container *ngFor='let conversion of conversions'>
+  <ng-container *ngFor='let collection of ConversionCollections'>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{conversion.from}}
+          {{collection.conversion.from}}
         </mat-panel-title>
       </mat-expansion-panel-header>
 
       <mat-selection-list>
-        <mat-list-option *ngFor="let to of conversion.to">
-          {{to}}
+        <mat-list-option *ngFor="let conversion of collection.relatedConversions">
+          {{conversion.to}}
         </mat-list-option>
       </mat-selection-list>
     </mat-expansion-panel>

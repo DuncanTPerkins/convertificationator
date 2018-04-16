@@ -7,8 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { MatToolbarModule, MatIconModule, MatFormFieldModule, MatCardModule, MatInputModule, MatExpansionModule, MatListModule } from '@angular/material';
 import { AppComponent } from './app.component';
 import { ConversionCardComponent } from './conversion-card/conversion-card.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AddToFavoritesDialogComponent } from './add-to-favorites-dialog/add-to-favorites-dialog.component';
+import { LocalStorageModule } from '@ngx-pwa/local-storage';
+import { DatabaseService } from './database.service';
 
 
 @NgModule({
@@ -32,9 +34,10 @@ import { AddToFavoritesDialogComponent } from './add-to-favorites-dialog/add-to-
     MatButtonModule,
     MatDialogModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    LocalStorageModule
   ],
-  providers: [ValueService],
+  providers: [ValueService, DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
