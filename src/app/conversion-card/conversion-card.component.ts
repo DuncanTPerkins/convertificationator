@@ -9,7 +9,7 @@ import { ValueService } from '../value.service';
 export class ConversionCardComponent implements OnInit {
   @Input() from: string;
   @Input() to: string;
-  @Input() formula: Function;
+  @Input() formula: string;
   @Input() name: string;
   convertedValue: number;
   currentInValue: number;
@@ -24,8 +24,9 @@ export class ConversionCardComponent implements OnInit {
   }
 
   performConversion(value: number) {
-    let returnval = this.formula(value);
-    return returnval;
+    console.log(this.formula);
+    let formulaFunction = new Function(this.formula);
+    return formulaFunction(value);
   }
 
 }

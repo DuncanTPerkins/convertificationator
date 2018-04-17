@@ -11,9 +11,15 @@ import { DatabaseService } from './database.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  @ViewChild('valueField')valueField: any
-  constructor(private valueService: ValueService, private dialog: MatDialog, private db: DatabaseService) {}
+  favoriteConversions: Conversion[];
 
+  @ViewChild('valueField')valueField: any
+  constructor(private valueService: ValueService, private dialog: MatDialog, private db: DatabaseService) {
+    this.valueService.currentConversions.subscribe(data => {
+      this.favoriteConversions = data.filter(x => x.isFavorited);
+    })
+  }
+  
   changeValue(value: number) {
     this.valueService.changeValue(value);
   }
@@ -22,10 +28,6 @@ export class AppComponent {
     let dialogRef = this.dialog.open(AddToFavoritesDialogComponent, {
       height: '50%',
       width: '50%',
-      data: {
-        conversions: [{from: 'Miles', to: ['Meters', 'Kilometers', 'Parsecs']},
-                      {from: 'Fahrenheit', to: ['Celcius', 'Kelvin']}]
-        }
       });
     }
   }
