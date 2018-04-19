@@ -9,7 +9,7 @@
       </mat-expansion-panel-header>
 
       <mat-selection-list>
-        <mat-list-option *ngFor="let conversion of collection.relatedConversions">
+        <mat-list-option *ngFor="let conversion of collection.relatedConversions" (click)="conversion.isFavorited = !conversion.isFavorited" [selected]="conversion.isFavorited">
           {{conversion.to}}
         </mat-list-option>
       </mat-selection-list>
@@ -18,5 +18,5 @@
   </ng-container>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="saveChanges()">Ok</button>
 </mat-dialog-actions>

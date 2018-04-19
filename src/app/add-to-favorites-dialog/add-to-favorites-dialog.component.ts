@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import { ConversionCollection } from '../conversion-collection.model';
 import { DatabaseService } from '../database.service';
 import { Conversion } from '../conversion.model';
@@ -12,7 +12,7 @@ import { ValueService } from '../value.service';
 export class AddToFavoritesDialogComponent implements OnInit {
   conversionCollections: ConversionCollection[] = new Array();
   conversions: Conversion[];
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private db: DatabaseService, private value: ValueService) {
+  constructor(private db: DatabaseService, private value: ValueService, private dialog: MatDialogRef<AddToFavoritesDialogComponent>) {
     this.value.currentConversions.subscribe(value => {
       this.conversions = value;
       let usedValues = new Array();
@@ -28,6 +28,10 @@ export class AddToFavoritesDialogComponent implements OnInit {
     });
   }
 
+  saveChanges() {
+    this.value.updateConversions(this.conversions);
+    this.dialog.close(this.conversions);
+  }
   ngOnInit() {
   }
 }

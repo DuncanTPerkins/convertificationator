@@ -28,6 +28,9 @@ export class AppComponent {
     let dialogRef = this.dialog.open(AddToFavoritesDialogComponent, {
       height: '80%',
       width: '80%',
+      })
+      .afterClosed().subscribe((data: Conversion[]) => {
+        this.favoriteConversions = data.filter(x => x.isFavorited);
       });
     }
   }

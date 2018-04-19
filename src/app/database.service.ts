@@ -25,20 +25,20 @@ export class DatabaseService {
             var data = new Array();
             data.push(
                 {
-                    from: 'MI',
-                    to: 'KM',
+                    from: 'Miles',
+                    to: 'Kilometers',
                     formula: 'return x / 0.62137',
                     name: 'Miles to Kilometers',
                     isFavorited: true
                 },
                 {
-                    from: 'C',
-                    to: 'F',
+                    from: 'Celcius',
+                    to: 'Fahrenheit',
                     formula: 'return x * 1.8 + 32',
                     name: 'Celsius to Fahrenheit'
                 },
                 {
-                    from: 'MI',
+                    from: 'Miles',
                     to: 'Acres',
                     formula: 'return x * 640',
                     name: 'Square Miles to Acres'
