@@ -6,14 +6,14 @@ import { ValueService } from "./value.service";
 @Injectable()
 export class DatabaseService {
     constructor(private db: LocalStorage, private value: ValueService) {
-        this.db.getItem('conversions').subscribe((conversions: string) => {
+        this.db.getItem('conversions').subscribe((conversions: Conversion[]) => {
             if(!conversions) {
                 console.log('creating database');
                 this.fillDb();
             }
             else {
                 console.log('found records in database');
-                this.value.updateConversions(JSON.parse(conversions));
+                this.value.updateConversions(conversions);
             }
         });
     }
@@ -27,18 +27,24 @@ export class DatabaseService {
                 {
                     from: 'MI',
                     to: 'KM',
-                    formula: x => x / 0.62137,
+                    formula: 'return x / 0.62137',
                     name: 'Miles to Kilometers',
                     isFavorited: true
                 },
                 {
                     from: 'C',
                     to: 'F',
-                    formula: x => x * 1.8 + 32,
+                    formula: 'return x * 1.8 + 32',
                     name: 'Celsius to Fahrenheit'
+                },
+                {
+                    from: 'MI',
+                    to: 'Acres',
+                    formula: 'return x * 640',
+                    name: 'Square Miles to Acres'
                 }
             );
-            this.db.setItem('conversions', JSON.stringify(data)).subscribe(data => {
+            this.db.setItem('conversions', data).subscribe(data => {
                 console.log(data);
             })
             this.value.updateConversions(data);

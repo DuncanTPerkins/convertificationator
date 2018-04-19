@@ -25,7 +25,7 @@ export class ConversionCardComponent implements OnInit {
 
   performConversion(value: number) {
     console.log(this.formula);
-    let formulaFunction = new Function(this.formula);
+    let formulaFunction = new Function('x', this.formula);
     return formulaFunction(value);
   }
 

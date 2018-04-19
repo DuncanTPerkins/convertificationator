@@ -26,8 +26,8 @@ export class AppComponent {
 
   addToFavorites() {
     let dialogRef = this.dialog.open(AddToFavoritesDialogComponent, {
-      height: '50%',
-      width: '50%',
+      height: '80%',
+      width: '80%',
       });
     }
   }

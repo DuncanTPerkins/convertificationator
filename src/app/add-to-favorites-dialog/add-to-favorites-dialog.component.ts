@@ -15,17 +15,17 @@ export class AddToFavoritesDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private db: DatabaseService, private value: ValueService) {
     this.value.currentConversions.subscribe(value => {
       this.conversions = value;
+      let usedValues = new Array();
       for(var conversion of this.conversions) {
-        var collection = new ConversionCollection;
-        collection.conversion = conversion;
-        for(var childConversion of this.conversions) {
-          if(childConversion.to == conversion.from) {
-            collection.relatedConversions.push(childConversion);
-          }
+        if(!usedValues.includes(conversion.from)) {
+          usedValues.push(conversion.from);
+          var collection = new ConversionCollection();
+          collection.conversion = conversion;
+          collection.relatedConversions = this.conversions.filter(x => x.from == conversion.from);
+          this.conversionCollections.push(collection);
         }
-        this.conversionCollections.push(collection);
       }
-    })
+    });
   }
 
   ngOnInit() {
