@@ -3,11 +3,11 @@
   <span class="white-space"></span>
   <span class="right-action"><button mat-icon-button (click)="addToFavorites()"><mat-icon>add</mat-icon></button></span>
 </mat-toolbar>
-<mat-form-field class="value-input-field">
-  <input matInput type="number" placeholder="Value" (ngModelChange)="changeValue($event)" autofocus/>
-</mat-form-field>
-<conversion-card *ngFor='let conversion of favoriteConversions'
-[from]='conversion.from'
-[to]='conversion.to'
-[formula]='conversion.formula'
-[name]='conversion.name'>
+    <mat-form-field class="value-input-field">
+        <input matInput type="number" placeholder="Value" (ngModelChange)="changeValue($event)" [ngModel]="invalue" autofocus/>
+      </mat-form-field>
+      <conversion-card *ngFor='let conversion of favoriteConversions'
+      [from]='conversion.from'
+      [to]='conversion.to'
+      [formula]='conversion.formula'
+      [name]='conversion.name'>

@@ -12,7 +12,7 @@ import { DatabaseService } from './database.service';
 })
 export class AppComponent {
   favoriteConversions: Conversion[];
-
+  invalue: number;
   @ViewChild('valueField')valueField: any
   constructor(private valueService: ValueService, private dialog: MatDialog, private db: DatabaseService) {
     this.valueService.currentConversions.subscribe(data => {
