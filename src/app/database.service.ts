@@ -16,6 +16,13 @@ export class DatabaseService {
                 this.value.updateConversions(conversions);
             }
         });
+
+        this.value.currentConversions.subscribe((data: Conversion[]) => {
+            if(data) {
+                this.db.setItem('conversions', data).subscribe(data => {
+                });
+            }
+        })
     }
 
     ngOnInit() {
@@ -45,7 +52,6 @@ export class DatabaseService {
                 }
             );
             this.db.setItem('conversions', data).subscribe(data => {
-                console.log(data);
             })
             this.value.updateConversions(data);
     }

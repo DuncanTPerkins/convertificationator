@@ -15,8 +15,10 @@ export class AppComponent {
   invalue: number;
   @ViewChild('valueField')valueField: any
   constructor(private valueService: ValueService, private dialog: MatDialog, private db: DatabaseService) {
-    this.valueService.currentConversions.subscribe(data => {
-      this.favoriteConversions = data.filter(x => x.isFavorited);
+    this.valueService.currentConversions.subscribe((data: Conversion[]) => {
+      if(data) {
+        this.favoriteConversions = data.filter(x => x.isFavorited);
+      }
     })
   }
   

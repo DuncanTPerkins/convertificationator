@@ -1,6 +1,7 @@
 <mat-card>
   <mat-card-subtitle>
-    {{name}}
+    <span style="float: left;">{{name}}</span>
+    <button mat-icon-button style="float: right;" (click)="removeFavorite()">X</button>
   </mat-card-subtitle>
   <mat-card-content>
     {{currentInValue || 0}} {{from}} = <span class="answer">{{convertedValue | number:'1.0-3'}}</span> {{to}}

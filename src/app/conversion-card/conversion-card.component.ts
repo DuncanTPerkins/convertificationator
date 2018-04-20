@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { ValueService } from '../value.service';
+import { Conversion } from '../conversion.model';
 
 @Component({
   selector: 'conversion-card',
@@ -24,9 +25,17 @@ export class ConversionCardComponent implements OnInit {
   }
 
   performConversion(value: number) {
-    console.log(this.formula);
     let formulaFunction = new Function('x', this.formula);
     return formulaFunction(value);
+  }
+
+  removeFavorite() {
+    this.valueService.currentConversions.toPromise().then((data: Conversion[]) => {
+      let conversion = { from: this.from, to: this.to, formula: this.formula, name: this.name } as Conversion; 
+      let newConversions = data.filter(x => x.name != conversion.name);
+      newConversions.push(conversion);
+      this.valueService.updateConversions(newConversions);
+    });
   }
 
 }
