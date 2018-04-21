@@ -30,12 +30,16 @@ export class ConversionCardComponent implements OnInit {
   }
 
   removeFavorite() {
-    this.valueService.currentConversions.toPromise().then((data: Conversion[]) => {
-      let conversion = { from: this.from, to: this.to, formula: this.formula, name: this.name } as Conversion; 
+    this.valueService.currentConversions.subscribe((data: Conversion[]) => {
+      let conversion = { from: this.from, to: this.to, formula: this.formula, name: this.name, isFavorited: false } as Conversion; 
       let newConversions = data.filter(x => x.name != conversion.name);
       newConversions.push(conversion);
-      this.valueService.updateConversions(newConversions);
-    });
+      this.updateConversions(newConversions);
+    }).unsubscribe();
+  }
+
+  updateConversions(conversions: Conversion[]) {
+    this.valueService.updateConversions(conversions);
   }
 
 }

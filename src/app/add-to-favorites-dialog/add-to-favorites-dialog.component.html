@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Add to Favorites</h2>
+<h2 mat-dialog-title>Manage Favorites</h2>
 <mat-dialog-content>
   <ng-container *ngFor='let collection of conversionCollections'>
     <mat-expansion-panel>
@@ -7,10 +7,9 @@
           {{collection.conversion.from}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-
       <mat-selection-list>
         <mat-list-option *ngFor="let conversion of collection.relatedConversions" (click)="conversion.isFavorited = !conversion.isFavorited" [selected]="conversion.isFavorited">
-          {{conversion.to}}
+            <i style="font-size: 0.8em">to</i> {{conversion.to}}
         </mat-list-option>
       </mat-selection-list>
     </mat-expansion-panel>

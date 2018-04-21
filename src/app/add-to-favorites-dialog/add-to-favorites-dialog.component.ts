@@ -32,6 +32,7 @@ export class AddToFavoritesDialogComponent implements OnInit {
     this.value.updateConversions(this.conversions);
     this.dialog.close(this.conversions);
   }
+  
   ngOnInit() {
   }
 }

@@ -16,6 +16,7 @@ export class AppComponent {
   @ViewChild('valueField')valueField: any
   constructor(private valueService: ValueService, private dialog: MatDialog, private db: DatabaseService) {
     this.valueService.currentConversions.subscribe((data: Conversion[]) => {
+      console.log('updated');
       if(data) {
         this.favoriteConversions = data.filter(x => x.isFavorited);
       }
