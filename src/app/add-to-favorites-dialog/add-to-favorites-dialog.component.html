@@ -1,6 +1,7 @@
-<h2 mat-dialog-title>Manage Favorites</h2>
+<h2 mat-dialog-title>Manage Favorites</h2> <mat-form-field><input type="text" matInput placeholder="Search..." [(ngModel)]="searchValue" (keyup)="filterQuery()"/></mat-form-field>
+
 <mat-dialog-content>
-  <ng-container *ngFor='let collection of conversionCollections'>
+  <ng-container *ngFor='let collection of filteredCollection'>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>

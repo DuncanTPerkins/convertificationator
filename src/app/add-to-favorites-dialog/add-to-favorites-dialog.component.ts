@@ -10,7 +10,9 @@ import { ValueService } from '../value.service';
   styleUrls: ['./add-to-favorites-dialog.component.css']
 })
 export class AddToFavoritesDialogComponent implements OnInit {
+  searchValue: string = '';
   conversionCollections: ConversionCollection[] = new Array();
+  filteredCollection: ConversionCollection[] = new Array();
   conversions: Conversion[];
   constructor(private db: DatabaseService, private value: ValueService, private dialog: MatDialogRef<AddToFavoritesDialogComponent>) {
     this.value.currentConversions.subscribe(value => {
@@ -25,7 +27,16 @@ export class AddToFavoritesDialogComponent implements OnInit {
           this.conversionCollections.push(collection);
         }
       }
+      this.filterQuery();
     });
+  }
+
+  filterQuery() {
+    if(!this.searchValue) {
+      this.filteredCollection = this.conversionCollections;
+      return;
+    }
+    this.filteredCollection = this.conversionCollections.filter(x => x.conversion.name.includes(this.searchValue));
   }
 
   saveChanges() {

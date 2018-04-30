@@ -11,4 +11,21 @@
 
 .main-content {
     margin: 8px;
+    flex: 1;
+    overflow: auto;
+}
+
+.add-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.header {
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
 }

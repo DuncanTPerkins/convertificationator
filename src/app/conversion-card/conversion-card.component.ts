@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { ValueService } from '../value.service';
 import { Conversion } from '../conversion.model';
+import "rxjs/add/operator/take";
 
 @Component({
   selector: 'conversion-card',
@@ -25,17 +26,17 @@ export class ConversionCardComponent implements OnInit {
   }
 
   performConversion(value: number) {
-    let formulaFunction = new Function('x', this.formula);
+    let formulaFunction = new Function('x', 'return ' + this.formula);
     return formulaFunction(value);
   }
 
   removeFavorite() {
-    this.valueService.currentConversions.subscribe((data: Conversion[]) => {
+    this.valueService.currentConversions.take(1).subscribe((data: Conversion[]) => {
       let conversion = { from: this.from, to: this.to, formula: this.formula, name: this.name, isFavorited: false } as Conversion; 
       let newConversions = data.filter(x => x.name != conversion.name);
       newConversions.push(conversion);
       this.updateConversions(newConversions);
-    }).unsubscribe();
+    });
   }
 
   updateConversions(conversions: Conversion[]) {

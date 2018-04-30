@@ -3,7 +3,7 @@
     <span>{{name}}</span>
   </mat-card-subtitle>
   <mat-card-content>
-    {{currentInValue || 0}} {{from}} = <span class="answer">{{convertedValue | number:'1.0-3'}}</span> {{to}}
+    <span *ngIf='currentInValue'>{{currentInValue || 0}} {{from}} = <span class="answer">{{convertedValue | number:'1.0-3'}}</span> {{to}}</span>
   </mat-card-content>
   <mat-card-footer>
       <button mat-icon-button (click)="removeFavorite()">x</button>
