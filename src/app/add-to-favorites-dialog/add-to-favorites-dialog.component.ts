@@ -36,7 +36,7 @@ export class AddToFavoritesDialogComponent implements OnInit {
       this.filteredCollection = this.conversionCollections;
       return;
     }
-    this.filteredCollection = this.conversionCollections.filter(x => x.conversion.name.includes(this.searchValue));
+    this.filteredCollection = this.conversionCollections.filter(x => x.conversion.name.toLowerCase().includes(this.searchValue.toLowerCase()));
   }
 
   saveChanges() {
