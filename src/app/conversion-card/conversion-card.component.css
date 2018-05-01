@@ -2,3 +2,12 @@
     font-weight: bold;
     font-size: 1.2em;
 }
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.align {
+    margin-top: -8px;
+}

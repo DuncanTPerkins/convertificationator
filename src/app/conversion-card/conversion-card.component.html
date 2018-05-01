@@ -1,12 +1,12 @@
 <mat-card>
-  <mat-card-subtitle>
-    <span>{{name}}</span>
+  <mat-card-subtitle class="flex">
+      <span>{{name}}</span>
+      <button class="align" mat-icon-button (click)="removeFavorite()">x</button>
   </mat-card-subtitle>
   <mat-card-content>
     <span *ngIf='currentInValue'>{{currentInValue || 0}} {{from}} = <span class="answer">{{convertedValue | number:'1.0-3'}}</span> {{to}}</span>
   </mat-card-content>
   <mat-card-footer>
-      <button mat-icon-button (click)="removeFavorite()">x</button>
   </mat-card-footer>
 </mat-card>
 <br>

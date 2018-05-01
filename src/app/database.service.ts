@@ -49,12 +49,14 @@ export class DatabaseService {
                     to: 'Kilometers',
                     formula: 'x / 0.62137',
                     name: 'Miles to Kilometers',
+                    isFavorited: true
                 },
                 {
                     from: 'Celcius',
                     to: 'Fahrenheit',
                     formula: 'x * 1.8 + 32',
-                    name: 'Celsius to Fahrenheit'
+                    name: 'Celsius to Fahrenheit',
+                    isFavorited: true
                 },
                 {
                     from: 'Miles',
@@ -84,7 +86,8 @@ export class DatabaseService {
                     from: 'Inches',
                     to: 'Centimeters',
                     formula: 'x / 0.39370',
-                    name: 'Inches to Centimeters'
+                    name: 'Inches to Centimeters',
+                    isFavorited: true
                 },
                 {
                     from: 'Fahrenheit',
