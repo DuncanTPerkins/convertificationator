@@ -11,8 +11,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AddToFavoritesDialogComponent } from './add-to-favorites-dialog/add-to-favorites-dialog.component';
 import { LocalStorageModule } from '@ngx-pwa/local-storage';
 import { DatabaseService } from './database.service';
+import { ForexService } from './forex.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,10 @@ import { environment } from '../environments/environment';
     MatExpansionModule,
     MatListModule,
     LocalStorageModule,
+    HttpModule,
     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],
-    providers: [ValueService, DatabaseService],
+    providers: [ValueService, DatabaseService, ForexService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
