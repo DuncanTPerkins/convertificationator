@@ -19,9 +19,9 @@ export class ForexService {
     return headers;
   }
 
-  getForexConversion(baseCurrency: string, targetCurrency: string) {
+  getForexConversion() {
     let headers = this.getHeaders();
-    return this.http.get(environment.restApiPrefix + `forex/${baseCurrency}/${targetCurrency}`, { headers: headers, withCredentials: true });
+    return this.http.get(environment.restApiPrefix + 'forex/', { headers: headers, withCredentials: true });
   }
 
 }
